@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuHALAMAN_MENU">
+    <property name="title">
+     <string>HALAMAN MENU</string>
+    </property>
+    <addaction name="actionFORM_IKLAN"/>
+    <addaction name="actionFORM_MEMBER"/>
+    <addaction name="actionFORM_PEMBAYARAN"/>
+    <addaction name="actionFORM_PESAN_INBOX"/>
+   </widget>
+   <addaction name="menuHALAMAN_MENU"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionFORM_IKLAN">
+   <property name="text">
+    <string>FORM IKLAN</string>
+   </property>
+  </action>
+  <action name="actionFORM_MEMBER">
+   <property name="text">
+    <string>FORM MEMBER</string>
+   </property>
+  </action>
+  <action name="actionFORM_PEMBAYARAN">
+   <property name="text">
+    <string>FORM PEMBAYARAN</string>
+   </property>
+  </action>
+  <action name="actionFORM_PESAN_INBOX">
+   <property name="text">
+    <string>FORM PESAN INBOX</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

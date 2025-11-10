@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>657</width>
+    <height>449</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QWidget" name="formLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>0</y>
+     <width>421</width>
+     <height>304</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="iDMemberLabel">
+      <property name="text">
+       <string>ID Member</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="iDMemberLineEdit"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="tanggalPasangLabel">
+      <property name="text">
+       <string>Tanggal Pasang</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QDateEdit" name="tanggalPasangDateEdit"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="judulIklanLabel">
+      <property name="text">
+       <string>Judul Iklan</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="judulIklanLineEdit"/>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="kondisiLabel">
+      <property name="text">
+       <string>Kondisi</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QComboBox" name="kondisiComboBox"/>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="statusAktifLabel">
+      <property name="text">
+       <string>Status Aktif</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QComboBox" name="statusAktifComboBox"/>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="namaJalanLabel">
+      <property name="text">
+       <string>Nama Jalan</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="namaJalanLineEdit"/>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="gambar1Label">
+      <property name="text">
+       <string>Gambar1</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QLineEdit" name="gambar1LineEdit"/>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="gambar2Label">
+      <property name="text">
+       <string>Gambar2</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
+     <widget class="QLineEdit" name="gambar2LineEdit"/>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="gambar3Label">
+      <property name="text">
+       <string>Gambar3</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QLineEdit" name="gambar3LineEdit"/>
+    </item>
+    <item row="9" column="0">
+     <widget class="QLabel" name="hargaLabel">
+      <property name="text">
+       <string>Harga</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="1">
+     <widget class="QLineEdit" name="hargaLineEdit"/>
+    </item>
+    <item row="10" column="0">
+     <widget class="QLabel" name="deskripsiLabel">
+      <property name="text">
+       <string>Deskripsi</string>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="1">
+     <widget class="QLineEdit" name="deskripsiLineEdit"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>310</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>SIMPAN</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>310</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>UBAH</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>310</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>HAPUS</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_4">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>310</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>CLEAR</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="tableWidget">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>340</y>
+     <width>256</width>
+     <height>192</height>
+    </rect>
+   </property>
+   <column>
+    <property name="text">
+     <string>ID</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>TANGGAL PASANG</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>JUDUL IKLAN</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>KONDISI</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>STATUS AKTIF</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>NAMA JALAN</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>GAMBAR1</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>GAMBAR2</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>GAMBAR3</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>DESKRIPSI</string>
+    </property>
+   </column>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
