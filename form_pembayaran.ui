@@ -75,11 +75,11 @@
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="simpanBtn">
    <property name="geometry">
     <rect>
      <x>80</x>
-     <y>200</y>
+     <y>240</y>
      <width>75</width>
      <height>24</height>
     </rect>
@@ -88,11 +88,11 @@
     <string>SIMPAN</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="ubahBtn">
    <property name="geometry">
     <rect>
      <x>180</x>
-     <y>200</y>
+     <y>240</y>
      <width>75</width>
      <height>24</height>
     </rect>
@@ -101,11 +101,11 @@
     <string>UBAH</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="ubahBtn_2">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>200</y>
+     <x>280</x>
+     <y>240</y>
      <width>75</width>
      <height>24</height>
     </rect>
@@ -114,24 +114,24 @@
     <string>HAPUS</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="cetakBtn">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>200</y>
+     <x>390</x>
+     <y>240</y>
      <width>75</width>
      <height>24</height>
     </rect>
    </property>
    <property name="text">
-    <string>CLEAR</string>
+    <string>CETAK</string>
    </property>
   </widget>
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>240</y>
+     <x>30</x>
+     <y>280</y>
      <width>511</width>
      <height>192</height>
     </rect>
@@ -166,6 +166,16 @@
      <string>ID IKLAN</string>
     </property>
    </column>
+  </widget>
+  <widget class="QLineEdit" name="cariEdit">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>210</y>
+     <width>331</width>
+     <height>22</height>
+    </rect>
+   </property>
   </widget>
  </widget>
  <resources/>

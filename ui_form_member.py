@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'form_member.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.10.0
+## Created by: Qt User Interface Compiler version 6.10.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -23,13 +23,13 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(588, 406)
-        self.pushButton = QPushButton(Form)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setGeometry(QRect(110, 230, 75, 24))
+        Form.resize(689, 517)
+        self.simpanBtn = QPushButton(Form)
+        self.simpanBtn.setObjectName(u"simpanBtn")
+        self.simpanBtn.setGeometry(QRect(210, 280, 75, 24))
         self.formLayoutWidget = QWidget(Form)
         self.formLayoutWidget.setObjectName(u"formLayoutWidget")
-        self.formLayoutWidget.setGeometry(QRect(110, 10, 351, 211))
+        self.formLayoutWidget.setGeometry(QRect(210, 10, 351, 211))
         self.formLayout = QFormLayout(self.formLayoutWidget)
         self.formLayout.setObjectName(u"formLayout")
         self.formLayout.setContentsMargins(0, 0, 0, 0)
@@ -78,11 +78,6 @@ class Ui_Form(object):
 
         self.formLayout.setWidget(4, QFormLayout.ItemRole.LabelRole, self.pathFotoLabel)
 
-        self.pathFotoLineEdit = QLineEdit(self.formLayoutWidget)
-        self.pathFotoLineEdit.setObjectName(u"pathFotoLineEdit")
-
-        self.formLayout.setWidget(4, QFormLayout.ItemRole.FieldRole, self.pathFotoLineEdit)
-
         self.passwordLabel = QLabel(self.formLayoutWidget)
         self.passwordLabel.setObjectName(u"passwordLabel")
 
@@ -103,15 +98,20 @@ class Ui_Form(object):
 
         self.formLayout.setWidget(6, QFormLayout.ItemRole.FieldRole, self.tanggalDaftarDateEdit)
 
-        self.pushButton_2 = QPushButton(Form)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setGeometry(QRect(200, 230, 75, 24))
-        self.pushButton_3 = QPushButton(Form)
-        self.pushButton_3.setObjectName(u"pushButton_3")
-        self.pushButton_3.setGeometry(QRect(290, 230, 75, 24))
-        self.pushButton_4 = QPushButton(Form)
-        self.pushButton_4.setObjectName(u"pushButton_4")
-        self.pushButton_4.setGeometry(QRect(380, 230, 75, 24))
+        self.pathFotoLineEdit = QLineEdit(self.formLayoutWidget)
+        self.pathFotoLineEdit.setObjectName(u"pathFotoLineEdit")
+
+        self.formLayout.setWidget(4, QFormLayout.ItemRole.FieldRole, self.pathFotoLineEdit)
+
+        self.ubahBtn = QPushButton(Form)
+        self.ubahBtn.setObjectName(u"ubahBtn")
+        self.ubahBtn.setGeometry(QRect(360, 280, 75, 24))
+        self.hapusBtn = QPushButton(Form)
+        self.hapusBtn.setObjectName(u"hapusBtn")
+        self.hapusBtn.setGeometry(QRect(500, 280, 75, 24))
+        self.cetakBtn = QPushButton(Form)
+        self.cetakBtn.setObjectName(u"cetakBtn")
+        self.cetakBtn.setGeometry(QRect(610, 280, 75, 24))
         self.tableWidget = QTableWidget(Form)
         if (self.tableWidget.columnCount() < 7):
             self.tableWidget.setColumnCount(7)
@@ -130,7 +130,10 @@ class Ui_Form(object):
         __qtablewidgetitem6 = QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(6, __qtablewidgetitem6)
         self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setGeometry(QRect(110, 260, 411, 192))
+        self.tableWidget.setGeometry(QRect(10, 320, 791, 192))
+        self.cariEdit = QLineEdit(Form)
+        self.cariEdit.setObjectName(u"cariEdit")
+        self.cariEdit.setGeometry(QRect(210, 240, 351, 22))
 
         self.retranslateUi(Form)
 
@@ -139,7 +142,7 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
-        self.pushButton.setText(QCoreApplication.translate("Form", u"SIMPAN", None))
+        self.simpanBtn.setText(QCoreApplication.translate("Form", u"SIMPAN", None))
         self.namaMemberLabel.setText(QCoreApplication.translate("Form", u"Nama Member", None))
         self.emailLabel.setText(QCoreApplication.translate("Form", u"Email", None))
         self.noTeleponLabel.setText(QCoreApplication.translate("Form", u"No Telepon", None))
@@ -147,9 +150,9 @@ class Ui_Form(object):
         self.pathFotoLabel.setText(QCoreApplication.translate("Form", u"Path Foto", None))
         self.passwordLabel.setText(QCoreApplication.translate("Form", u"Password", None))
         self.tanggalDaftarLabel.setText(QCoreApplication.translate("Form", u"Tanggal Daftar", None))
-        self.pushButton_2.setText(QCoreApplication.translate("Form", u"UBAH", None))
-        self.pushButton_3.setText(QCoreApplication.translate("Form", u"HAPUS", None))
-        self.pushButton_4.setText(QCoreApplication.translate("Form", u"CLEAR", None))
+        self.ubahBtn.setText(QCoreApplication.translate("Form", u"UBAH", None))
+        self.hapusBtn.setText(QCoreApplication.translate("Form", u"HAPUS", None))
+        self.cetakBtn.setText(QCoreApplication.translate("Form", u"CETAK", None))
         ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("Form", u"ID", None));
         ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>657</width>
-    <height>449</height>
+    <width>757</width>
+    <height>624</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <x>60</x>
      <y>0</y>
      <width>421</width>
-     <height>304</height>
+     <height>311</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout">
@@ -61,7 +61,26 @@
      </widget>
     </item>
     <item row="3" column="1">
-     <widget class="QComboBox" name="kondisiComboBox"/>
+     <widget class="QComboBox" name="kondisiComboBox">
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;segar&lt;/p&gt;&lt;p&gt;bagus&lt;/p&gt;&lt;p&gt;wangi&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Bagus</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Kurang Bagus</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Tidak Bagus</string>
+       </property>
+      </item>
+     </widget>
     </item>
     <item row="4" column="0">
      <widget class="QLabel" name="statusAktifLabel">
@@ -71,7 +90,26 @@
      </widget>
     </item>
     <item row="4" column="1">
-     <widget class="QComboBox" name="statusAktifComboBox"/>
+     <widget class="QComboBox" name="statusAktifComboBox">
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;2026&lt;/p&gt;&lt;p&gt;2027&lt;/p&gt;&lt;p&gt;2028&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>2026-2027</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2027-2028</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2028-2029</string>
+       </property>
+      </item>
+     </widget>
     </item>
     <item row="5" column="0">
      <widget class="QLabel" name="namaJalanLabel">
@@ -135,11 +173,11 @@
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="simpanBtn">
    <property name="geometry">
     <rect>
      <x>70</x>
-     <y>310</y>
+     <y>360</y>
      <width>75</width>
      <height>24</height>
     </rect>
@@ -148,11 +186,11 @@
     <string>SIMPAN</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="ubahBtn">
    <property name="geometry">
     <rect>
      <x>170</x>
-     <y>310</y>
+     <y>360</y>
      <width>75</width>
      <height>24</height>
     </rect>
@@ -161,11 +199,11 @@
     <string>UBAH</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="hapusBtn">
    <property name="geometry">
     <rect>
      <x>260</x>
-     <y>310</y>
+     <y>360</y>
      <width>75</width>
      <height>24</height>
     </rect>
@@ -174,25 +212,25 @@
     <string>HAPUS</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="cetakBtn">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>310</y>
+     <x>350</x>
+     <y>360</y>
      <width>75</width>
      <height>24</height>
     </rect>
    </property>
    <property name="text">
-    <string>CLEAR</string>
+    <string>CETAK</string>
    </property>
   </widget>
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>340</y>
-     <width>256</width>
+     <x>-60</x>
+     <y>400</y>
+     <width>821</width>
      <height>192</height>
     </rect>
    </property>
@@ -246,6 +284,19 @@
      <string>DESKRIPSI</string>
     </property>
    </column>
+  </widget>
+  <widget class="QLineEdit" name="cariEdit">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>550</y>
+     <width>361</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
   </widget>
  </widget>
  <resources/>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>669</width>
+    <height>513</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QWidget" name="formLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>230</x>
      <y>10</y>
      <width>241</width>
-     <height>136</height>
+     <height>158</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout">
@@ -41,7 +41,7 @@
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QLineEdit" name="namaPengirimLineEdit"/>
+     <widget class="QLineEdit" name="linePengirim"/>
     </item>
     <item row="2" column="0">
      <widget class="QLabel" name="emailPengirimLabel">
@@ -49,9 +49,6 @@
        <string>Email Pengirim</string>
       </property>
      </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QLineEdit" name="emailPengirimLineEdit"/>
     </item>
     <item row="3" column="0">
      <widget class="QLabel" name="isiPesanLabel">
@@ -61,7 +58,7 @@
      </widget>
     </item>
     <item row="3" column="1">
-     <widget class="QLineEdit" name="isiPesanLineEdit"/>
+     <widget class="QLineEdit" name="lineIsi"/>
     </item>
     <item row="4" column="0">
      <widget class="QLabel" name="iDMemberLabel">
@@ -73,13 +70,16 @@
     <item row="4" column="1">
      <widget class="QLineEdit" name="iDMemberLineEdit"/>
     </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="emailPengirimLineEdit"/>
+    </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="simpanBtn">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>150</y>
+     <x>180</x>
+     <y>240</y>
      <width>75</width>
      <height>24</height>
     </rect>
@@ -88,11 +88,11 @@
     <string>SIMPAN</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="ubahBtn">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>150</y>
+     <x>270</x>
+     <y>240</y>
      <width>75</width>
      <height>24</height>
     </rect>
@@ -101,11 +101,11 @@
     <string>UBAH</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="hapusBtn">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>150</y>
+     <x>360</x>
+     <y>240</y>
      <width>75</width>
      <height>24</height>
     </rect>
@@ -114,31 +114,31 @@
     <string>HAPUS</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="cetakBtn">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>150</y>
+     <x>460</x>
+     <y>240</y>
      <width>75</width>
      <height>24</height>
     </rect>
    </property>
    <property name="text">
-    <string>CLEAR</string>
+    <string>CETAK</string>
    </property>
   </widget>
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>200</y>
-     <width>256</width>
+     <x>100</x>
+     <y>280</y>
+     <width>491</width>
      <height>192</height>
     </rect>
    </property>
    <column>
     <property name="text">
-     <string>ID</string>
+     <string>TANGGAL KIRIM</string>
     </property>
    </column>
    <column>
@@ -161,6 +161,16 @@
      <string>ID MEMBER</string>
     </property>
    </column>
+  </widget>
+  <widget class="QLineEdit" name="cariEdit">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>200</y>
+     <width>241</width>
+     <height>22</height>
+    </rect>
+   </property>
   </widget>
  </widget>
  <resources/>

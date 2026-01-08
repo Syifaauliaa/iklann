@@ -1,147 +1,122 @@
-# member.py - Mengelola Data Member
-import sys
-from PySide6.QtWidgets import QMainWindow, QMessageBox, QTableWidgetItem, QLineEdit, QApplication
-from PySide6.QtCore import QDate
-
-from ui_form_member import Ui_Form   # pastikan file ini sudah ada
+from PySide6.QtWidgets import (
+    QWidget, QTableWidgetItem, QMessageBox, QFileDialog
+)
+from ui_form_member import Ui_Form
 from db import DB
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
 
 
-class FormMember(QMainWindow, Ui_Form):
-    """Kelas untuk mengelola form dan data Member."""
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        self.setupUi(self)
+class FormMember(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_Form()
+        self.ui.setupUi(self)
+
         self.db = DB()
-
-        self.setWindowTitle("Form Data Member")
-        self.tanggalDaftarDateEdit.setDisplayFormat("yyyy-MM-dd")
-        self.tanggalDaftarDateEdit.setDate(QDate.currentDate())
-
-        # Hubungkan tombol
-        self.pushButton.clicked.connect(self.simpan_data)   # SIMPAN
-        self.pushButton_2.clicked.connect(self.ubah_data)   # UBAH
-        self.pushButton_3.clicked.connect(self.hapus_data)  # HAPUS
-        self.pushButton_4.clicked.connect(self.clear_form)  # CLEAR
-        self.tableWidget.cellClicked.connect(self.tabel_diklik)
-
         self.load_data()
 
-    def load_data(self):
-        """Mengambil data dari DB dan menampilkannya di QTableWidget (7 kolom)."""
-        data = self.db.cariDataMember()  # pastikan fungsi ini ada di db.py
+        # ===== Koneksi Tombol =====
+        self.ui.simpanBtn.clicked.connect(self.simpan)
+        self.ui.ubahBtn.clicked.connect(self.ubah)
+        self.ui.hapusBtn.clicked.connect(self.hapus)
+        self.ui.cetakBtn.clicked.connect(self.cetak_pdf)
+        self.ui.cariEdit.textChanged.connect(self.filter_data)
 
-        self.tableWidget.setRowCount(len(data))
-        self.tableWidget.setColumnCount(7)
-        header_labels = [
-            "ID", "NAMA", "EMAIL", "NO TLP",
-            "PIN BB", "PATH FOTO", "TANGGAL DAFTAR"
-        ]
-        self.tableWidget.setHorizontalHeaderLabels(header_labels)
+    # ================= LOAD DATA =================
+    def load_data(self, data=None):
+        if data is None:
+            data = self.db.cariDataMember()
 
-        for row, item in enumerate(data):
-            for col, value in enumerate(item):
-                self.tableWidget.setItem(row, col, QTableWidgetItem(str(value)))
+        self.ui.tableWidget.setRowCount(len(data))
+        for r, row in enumerate(data):
+            for c, val in enumerate(row):
+                self.ui.tableWidget.setItem(
+                    r, c, QTableWidgetItem(str(val))
+                )
 
-        self.tableWidget.resizeColumnsToContents()
+    # ================= SIMPAN =================
+    def simpan(self):
+        nama = self.ui.namaMemberLineEdit.text()
+        email = self.ui.emailLineEdit.text()
+        telp = self.ui.noTeleponLineEdit.text()
+        pin = self.ui.pINBBLineEdit.text()
+        foto = self.ui.pathFotoLineEdit.text()
+        password = self.ui.passwordLineEdit.text()
+        tgl = self.ui.tanggalDaftarDateEdit.date().toString("yyyy-MM-dd")
 
-    def simpan_data(self):
-        """Mengambil data dari form dan menyimpannya ke database."""
-        nama = self.namaMemberLineEdit.text()
-        email = self.emailLineEdit.text()
-        no_telp = self.noTeleponLineEdit.text()
-        pin_bb = self.pINBBLineEdit.text()
-        path_foto = self.pathFotoLineEdit.text()
-        password = self.passwordLineEdit.text()
-        tgl_daftar = self.tanggalDaftarDateEdit.date().toString("yyyy-MM-dd")
-
-        if not all([nama, email, no_telp, password]):
-            QMessageBox.warning(self, "Peringatan", "Nama, Email, No Telepon, dan Password wajib diisi!")
+        if nama == "":
+            QMessageBox.warning(self, "Validasi", "Nama member wajib diisi")
             return
 
-        try:
-            self.db.simpanMember(nama, email, no_telp, pin_bb, path_foto, password, tgl_daftar)
-            QMessageBox.information(self, "Sukses", "Data Member berhasil disimpan!")
-            self.load_data()
-            self.clear_form()
-        except Exception as e:
-            QMessageBox.critical(self, "Error", f"Gagal menyimpan data: {e}")
-
-    def ubah_data(self):
-        """Mengubah data Member dari tabel."""
-        baris = self.tableWidget.currentRow()
-        if baris < 0:
-            QMessageBox.warning(self, "Peringatan", "Pilih data yang akan diubah!")
-            return
-
-        kd_member = self.tableWidget.item(baris, 0).text()
-        nama = self.namaMemberLineEdit.text()
-        email = self.emailLineEdit.text()
-        no_telp = self.noTeleponLineEdit.text()
-        pin_bb = self.pINBBLineEdit.text()
-        path_foto = self.pathFotoLineEdit.text()
-        password = self.passwordLineEdit.text()
-        tgl_daftar = self.tanggalDaftarDateEdit.date().toString("yyyy-MM-dd")
-
-        try:
-            self.db.ubahMember(kd_member, nama, email, no_telp, pin_bb, path_foto, password, tgl_daftar)
-            QMessageBox.information(self, "Sukses", "Data Member berhasil diubah!")
-            self.load_data()
-            self.clear_form()
-        except Exception as e:
-            QMessageBox.critical(self, "Error", f"Gagal mengubah data: {e}")
-
-    def hapus_data(self):
-        """Menghapus data Member dari database."""
-        baris = self.tableWidget.currentRow()
-        if baris < 0:
-            QMessageBox.warning(self, "Peringatan", "Pilih data yang akan dihapus!")
-            return
-
-        kd_member = self.tableWidget.item(baris, 0).text()
-        confirm = QMessageBox.question(
-            self, 'Konfirmasi Hapus',
-            f"Yakin ingin menghapus Member ID {kd_member}?",
-            QMessageBox.Yes | QMessageBox.No
+        sukses = self.db.simpanMember(
+            nama, email, telp, pin, foto, password, tgl
         )
 
-        if confirm == QMessageBox.Yes:
-            try:
-                self.db.hapusMember(kd_member)
-                QMessageBox.information(self, "Sukses", "Data Member berhasil dihapus!")
-                self.load_data()
-                self.clear_form()
-            except Exception as e:
-                QMessageBox.critical(self, "Error", f"Gagal menghapus data: {e}")
+        if sukses:
+            QMessageBox.information(self, "Sukses", "Data member berhasil disimpan")
+            self.load_data()
+            self.clear_form()
+        else:
+            QMessageBox.critical(self, "Gagal", "Gagal menyimpan data")
 
-    def tabel_diklik(self, row, column):
-        """Mengisi form saat baris di tabel diklik."""
+    # ================= UBAH =================
+    def ubah(self):
+        QMessageBox.information(
+            self, "Info",
+            "Fungsi UBAH bisa ditambahkan (update by klik tabel)"
+        )
+
+    # ================= HAPUS =================
+    def hapus(self):
+        row = self.ui.tableWidget.currentRow()
+        if row < 0:
+            QMessageBox.warning(self, "Pilih Data", "Pilih data dulu")
+            return
+
+        kd_member = self.ui.tableWidget.item(row, 0).text()
+
         try:
-            self.namaMemberLineEdit.setText(self.tableWidget.item(row, 1).text())
-            self.emailLineEdit.setText(self.tableWidget.item(row, 2).text())
-            self.noTeleponLineEdit.setText(self.tableWidget.item(row, 3).text())
-            self.pINBBLineEdit.setText(self.tableWidget.item(row, 4).text())
-            self.pathFotoLineEdit.setText(self.tableWidget.item(row, 5).text())
-            self.passwordLineEdit.setText("")  # kosongkan password
-            tgl_daftar_str = self.tableWidget.item(row, 6).text()
-            tgl_daftar = QDate.fromString(tgl_daftar_str, "yyyy-MM-dd")
-            self.tanggalDaftarDateEdit.setDate(tgl_daftar)
+            cursor = self.db.koneksi.cursor()
+            cursor.execute(
+                "DELETE FROM member WHERE kd_member=%s", (kd_member,)
+            )
+            self.db.koneksi.commit()
+            QMessageBox.information(self, "Sukses", "Data berhasil dihapus")
+            self.load_data()
         except Exception as e:
-            QMessageBox.critical(self, "Error", f"Gagal mengisi form dari tabel: {e}")
+            QMessageBox.critical(self, "Error", str(e))
 
+    # ================= FILTER =================
+    def filter_data(self):
+        data = self.db.filterMember(self.ui.cariEdit.text())
+        self.load_data(data)
+
+    # ================= CETAK PDF =================
+    def cetak_pdf(self):
+        path, _ = QFileDialog.getSaveFileName(
+            self, "Simpan PDF", "", "PDF Files (*.pdf)"
+        )
+        if path:
+            c = canvas.Canvas(path, pagesize=letter)
+            c.drawString(100, 750, "LAPORAN DATA MEMBER")
+
+            y = 720
+            for row in self.db.cariDataMember():
+                c.drawString(
+                    100, y,
+                    f"{row[0]} | {row[1]} | {row[2]} | {row[3]}"
+                )
+                y -= 20
+
+            c.save()
+            QMessageBox.information(self, "Sukses", "PDF berhasil dibuat")
+
+    # ================= CLEAR FORM =================
     def clear_form(self):
-        """Membersihkan semua input form."""
-        self.namaMemberLineEdit.clear()
-        self.emailLineEdit.clear()
-        self.noTeleponLineEdit.clear()
-        self.pINBBLineEdit.clear()
-        self.pathFotoLineEdit.clear()
-        self.passwordLineEdit.clear()
-        self.tanggalDaftarDateEdit.setDate(QDate.currentDate())
-
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    window = FormMember()
-    window.show()
-    sys.exit(app.exec())
+        self.ui.namaMemberLineEdit.clear()
+        self.ui.emailLineEdit.clear()
+        self.ui.noTeleponLineEdit.clear()
+        self.ui.pINBBLineEdit.clear()
+        self.ui.pathFotoLineEdit.clear()
+        self.ui.passwordLineEdit.clear()

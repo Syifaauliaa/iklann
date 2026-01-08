@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'form_pesan_inbox.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.10.0
+## Created by: Qt User Interface Compiler version 6.10.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -23,10 +23,10 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(400, 300)
+        Form.resize(669, 513)
         self.formLayoutWidget = QWidget(Form)
         self.formLayoutWidget.setObjectName(u"formLayoutWidget")
-        self.formLayoutWidget.setGeometry(QRect(90, 10, 241, 136))
+        self.formLayoutWidget.setGeometry(QRect(230, 10, 241, 158))
         self.formLayout = QFormLayout(self.formLayoutWidget)
         self.formLayout.setObjectName(u"formLayout")
         self.formLayout.setContentsMargins(0, 0, 0, 0)
@@ -45,30 +45,25 @@ class Ui_Form(object):
 
         self.formLayout.setWidget(1, QFormLayout.ItemRole.LabelRole, self.namaPengirimLabel)
 
-        self.namaPengirimLineEdit = QLineEdit(self.formLayoutWidget)
-        self.namaPengirimLineEdit.setObjectName(u"namaPengirimLineEdit")
+        self.linePengirim = QLineEdit(self.formLayoutWidget)
+        self.linePengirim.setObjectName(u"linePengirim")
 
-        self.formLayout.setWidget(1, QFormLayout.ItemRole.FieldRole, self.namaPengirimLineEdit)
+        self.formLayout.setWidget(1, QFormLayout.ItemRole.FieldRole, self.linePengirim)
 
         self.emailPengirimLabel = QLabel(self.formLayoutWidget)
         self.emailPengirimLabel.setObjectName(u"emailPengirimLabel")
 
         self.formLayout.setWidget(2, QFormLayout.ItemRole.LabelRole, self.emailPengirimLabel)
 
-        self.emailPengirimLineEdit = QLineEdit(self.formLayoutWidget)
-        self.emailPengirimLineEdit.setObjectName(u"emailPengirimLineEdit")
-
-        self.formLayout.setWidget(2, QFormLayout.ItemRole.FieldRole, self.emailPengirimLineEdit)
-
         self.isiPesanLabel = QLabel(self.formLayoutWidget)
         self.isiPesanLabel.setObjectName(u"isiPesanLabel")
 
         self.formLayout.setWidget(3, QFormLayout.ItemRole.LabelRole, self.isiPesanLabel)
 
-        self.isiPesanLineEdit = QLineEdit(self.formLayoutWidget)
-        self.isiPesanLineEdit.setObjectName(u"isiPesanLineEdit")
+        self.lineIsi = QLineEdit(self.formLayoutWidget)
+        self.lineIsi.setObjectName(u"lineIsi")
 
-        self.formLayout.setWidget(3, QFormLayout.ItemRole.FieldRole, self.isiPesanLineEdit)
+        self.formLayout.setWidget(3, QFormLayout.ItemRole.FieldRole, self.lineIsi)
 
         self.iDMemberLabel = QLabel(self.formLayoutWidget)
         self.iDMemberLabel.setObjectName(u"iDMemberLabel")
@@ -80,18 +75,23 @@ class Ui_Form(object):
 
         self.formLayout.setWidget(4, QFormLayout.ItemRole.FieldRole, self.iDMemberLineEdit)
 
-        self.pushButton = QPushButton(Form)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setGeometry(QRect(50, 150, 75, 24))
-        self.pushButton_2 = QPushButton(Form)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setGeometry(QRect(130, 150, 75, 24))
-        self.pushButton_3 = QPushButton(Form)
-        self.pushButton_3.setObjectName(u"pushButton_3")
-        self.pushButton_3.setGeometry(QRect(220, 150, 75, 24))
-        self.pushButton_4 = QPushButton(Form)
-        self.pushButton_4.setObjectName(u"pushButton_4")
-        self.pushButton_4.setGeometry(QRect(300, 150, 75, 24))
+        self.emailPengirimLineEdit = QLineEdit(self.formLayoutWidget)
+        self.emailPengirimLineEdit.setObjectName(u"emailPengirimLineEdit")
+
+        self.formLayout.setWidget(2, QFormLayout.ItemRole.FieldRole, self.emailPengirimLineEdit)
+
+        self.simpanBtn = QPushButton(Form)
+        self.simpanBtn.setObjectName(u"simpanBtn")
+        self.simpanBtn.setGeometry(QRect(180, 240, 75, 24))
+        self.ubahBtn = QPushButton(Form)
+        self.ubahBtn.setObjectName(u"ubahBtn")
+        self.ubahBtn.setGeometry(QRect(270, 240, 75, 24))
+        self.hapusBtn = QPushButton(Form)
+        self.hapusBtn.setObjectName(u"hapusBtn")
+        self.hapusBtn.setGeometry(QRect(360, 240, 75, 24))
+        self.cetakBtn = QPushButton(Form)
+        self.cetakBtn.setObjectName(u"cetakBtn")
+        self.cetakBtn.setGeometry(QRect(460, 240, 75, 24))
         self.tableWidget = QTableWidget(Form)
         if (self.tableWidget.columnCount() < 5):
             self.tableWidget.setColumnCount(5)
@@ -106,7 +106,10 @@ class Ui_Form(object):
         __qtablewidgetitem4 = QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(4, __qtablewidgetitem4)
         self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setGeometry(QRect(70, 200, 256, 192))
+        self.tableWidget.setGeometry(QRect(100, 280, 491, 192))
+        self.cariEdit = QLineEdit(Form)
+        self.cariEdit.setObjectName(u"cariEdit")
+        self.cariEdit.setGeometry(QRect(230, 200, 241, 22))
 
         self.retranslateUi(Form)
 
@@ -120,12 +123,12 @@ class Ui_Form(object):
         self.emailPengirimLabel.setText(QCoreApplication.translate("Form", u"Email Pengirim", None))
         self.isiPesanLabel.setText(QCoreApplication.translate("Form", u"Isi Pesan", None))
         self.iDMemberLabel.setText(QCoreApplication.translate("Form", u"ID Member", None))
-        self.pushButton.setText(QCoreApplication.translate("Form", u"SIMPAN", None))
-        self.pushButton_2.setText(QCoreApplication.translate("Form", u"UBAH", None))
-        self.pushButton_3.setText(QCoreApplication.translate("Form", u"HAPUS", None))
-        self.pushButton_4.setText(QCoreApplication.translate("Form", u"CLEAR", None))
+        self.simpanBtn.setText(QCoreApplication.translate("Form", u"SIMPAN", None))
+        self.ubahBtn.setText(QCoreApplication.translate("Form", u"UBAH", None))
+        self.hapusBtn.setText(QCoreApplication.translate("Form", u"HAPUS", None))
+        self.cetakBtn.setText(QCoreApplication.translate("Form", u"CETAK", None))
         ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("Form", u"ID", None));
+        ___qtablewidgetitem.setText(QCoreApplication.translate("Form", u"TANGGAL KIRIM", None));
         ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
         ___qtablewidgetitem1.setText(QCoreApplication.translate("Form", u"NAMA", None));
         ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)

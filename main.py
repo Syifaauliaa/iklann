@@ -1,63 +1,93 @@
-# main.py - Disesuaikan untuk Periklanan
-
 import sys
-from PySide6.QtWidgets import QApplication, QMainWindow
-from PySide6.QtCore import QFile
+from PySide6.QtWidgets import QApplication, QMainWindow, QMenu
 from PySide6.QtUiTools import QUiLoader
+from PySide6.QtCore import QFile
 
-# Import form yang baru
-from iklan import FormIklan
 from member import FormMember
+from iklan import FormIklan
 from pembayaran import FormPembayaran
-from Pesaninbox import FormPesanInbox
-# Asumsi: Anda tetap menggunakan ui_form.py/form.ui yang lama
-# Jika Anda mengkompilasi form.ui, ubah QUiLoader menjadi import Ui_main
+from pesan_inbox import FormPesanInbox
+
 
 class Main(QMainWindow):
-    def __init__(self, parent=None):
-        super()._init_(parent)
+    def __init__(self):
+        super().__init__()
 
-        # Karena Anda menggunakan QUiLoader di form yang lama (form.ui),
-        # kita pertahankan cara ini untuk Main Window, atau ganti jika Anda sudah mengkompilasi form.ui.
-        ui_file = QFile("form.ui")
-        if not ui_file.open(QFile.ReadOnly): sys.exit(-1)
+        # ===============================
+        # LOAD UI (form.ui HARUS QWidget)
+        # ===============================
         loader = QUiLoader()
-        self.formUtama = loader.load(ui_file, self)
+        ui_file = QFile("form.ui")
+
+        if not ui_file.open(QFile.ReadOnly):
+            print("❌ Gagal membuka form.ui")
+            sys.exit(1)
+
+        self.ui = loader.load(ui_file)
         ui_file.close()
 
-        self.setCentralWidget(self.formUtama.centralwidget)
-        self.setMenuBar(self.formUtama.menuBar())
-        self.resize(self.formUtama.size())
+        if self.ui is None:
+            print("❌ UI gagal diload")
+            sys.exit(1)
 
-        # Sesuaikan koneksi menu action dari form.ui (asumsi Anda sudah mengubah nama action di Qt Designer)
-        # Jika Anda tetap menggunakan nama action lama, ubah koneksi di bawah.
-        # ASUMSI: actionForm_Dokter -> actionForm_Member, actionForm_Pasien -> actionForm_Iklan, dll.
+        # ===============================
+        # SET SEBAGAI CENTRAL WIDGET
+        # ===============================
+        self.setCentralWidget(self.ui)
+        self.resize(self.ui.size())
+        self.setWindowTitle("Aplikasi Periklanan")
 
-        try:
-            self.formUtama.actionForm_Dokter.triggered.connect(self.bukaMember)
-            self.formUtama.actionForm_Pasien.triggered.connect(self.bukaIklan)
-            self.formUtama.actionForm_Petugas.triggered.connect(self.bukaPembayaran) # Ganti Petugas
-            self.formUtama.actionForm_Obat.triggered.connect(self.bukaPesanInbox)  # Ganti Obat
-        except AttributeError:
-             print("Pastikan action menu di form.ui sudah diubah namanya (misalnya, actionForm_Member)")
+        # ===============================
+        # HUBUNGKAN ACTION MENU (FIX)
+        # ===============================
+        self.hubungkan_menu()
 
+    # =====================================================
+    # HUBUNGKAN SEMUA ACTION DALAM MENU BAR
+    # =====================================================
+    def hubungkan_menu(self):
+        menu_bar = self.ui.menuBar()
+
+        for menu in menu_bar.findChildren(QMenu):
+            for action in menu.actions():
+                teks = action.text().lower()
+
+                if "member" in teks:
+                    action.triggered.connect(self.bukaMember)
+
+                elif "iklan" in teks:
+                    action.triggered.connect(self.bukaIklan)
+
+                elif "pembayaran" in teks:
+                    action.triggered.connect(self.bukaPembayaran)
+
+                elif "pesan" in teks or "inbox" in teks:
+                    action.triggered.connect(self.bukaPesanInbox)
+
+    # ===============================
+    # OPEN FORM
+    # ===============================
     def bukaMember(self):
-        self.memberForm = FormMember()
-        self.memberForm.show()
+        self.formMember = FormMember()
+        self.formMember.show()
 
     def bukaIklan(self):
-        self.iklanForm = FormIklan()
-        self.iklanForm.show()
+        self.formIklan = FormIklan()
+        self.formIklan.show()
 
     def bukaPembayaran(self):
-        self.pembayaranForm = FormPembayaran()
-        self.pembayaranForm.show()
+        self.formPembayaran = FormPembayaran()
+        self.formPembayaran.show()
 
     def bukaPesanInbox(self):
-        self.pesanInboxForm = FormPesanInbox()
-        self.pesanInboxForm.show()
+        self.formPesanInbox = FormPesanInbox()
+        self.formPesanInbox.show()
 
-if __name__ == '_main_':
+
+# ===============================
+# MAIN PROGRAM
+# ===============================
+if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = Main()
     window.show()

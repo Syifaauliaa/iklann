@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'form_pembayaran.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.10.0
+## Created by: Qt User Interface Compiler version 6.10.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -80,18 +80,18 @@ class Ui_Form(object):
 
         self.formLayout.setWidget(4, QFormLayout.ItemRole.FieldRole, self.iDIklanLineEdit)
 
-        self.pushButton = QPushButton(Form)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setGeometry(QRect(80, 200, 75, 24))
-        self.pushButton_2 = QPushButton(Form)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setGeometry(QRect(180, 200, 75, 24))
-        self.pushButton_3 = QPushButton(Form)
-        self.pushButton_3.setObjectName(u"pushButton_3")
-        self.pushButton_3.setGeometry(QRect(270, 200, 75, 24))
-        self.pushButton_4 = QPushButton(Form)
-        self.pushButton_4.setObjectName(u"pushButton_4")
-        self.pushButton_4.setGeometry(QRect(370, 200, 75, 24))
+        self.simpanBtn = QPushButton(Form)
+        self.simpanBtn.setObjectName(u"simpanBtn")
+        self.simpanBtn.setGeometry(QRect(80, 240, 75, 24))
+        self.ubahBtn = QPushButton(Form)
+        self.ubahBtn.setObjectName(u"ubahBtn")
+        self.ubahBtn.setGeometry(QRect(180, 240, 75, 24))
+        self.ubahBtn_2 = QPushButton(Form)
+        self.ubahBtn_2.setObjectName(u"ubahBtn_2")
+        self.ubahBtn_2.setGeometry(QRect(280, 240, 75, 24))
+        self.cetakBtn = QPushButton(Form)
+        self.cetakBtn.setObjectName(u"cetakBtn")
+        self.cetakBtn.setGeometry(QRect(390, 240, 75, 24))
         self.tableWidget = QTableWidget(Form)
         if (self.tableWidget.columnCount() < 6):
             self.tableWidget.setColumnCount(6)
@@ -108,7 +108,10 @@ class Ui_Form(object):
         __qtablewidgetitem5 = QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(5, __qtablewidgetitem5)
         self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setGeometry(QRect(70, 240, 511, 192))
+        self.tableWidget.setGeometry(QRect(30, 280, 511, 192))
+        self.cariEdit = QLineEdit(Form)
+        self.cariEdit.setObjectName(u"cariEdit")
+        self.cariEdit.setGeometry(QRect(110, 210, 331, 22))
 
         self.retranslateUi(Form)
 
@@ -122,10 +125,10 @@ class Ui_Form(object):
         self.namaPemilikRekLabel.setText(QCoreApplication.translate("Form", u"Nama Pemilik Rek", None))
         self.nominalLabel.setText(QCoreApplication.translate("Form", u"Nominal", None))
         self.iDIklanLabel.setText(QCoreApplication.translate("Form", u"ID Iklan", None))
-        self.pushButton.setText(QCoreApplication.translate("Form", u"SIMPAN", None))
-        self.pushButton_2.setText(QCoreApplication.translate("Form", u"UBAH", None))
-        self.pushButton_3.setText(QCoreApplication.translate("Form", u"HAPUS", None))
-        self.pushButton_4.setText(QCoreApplication.translate("Form", u"CLEAR", None))
+        self.simpanBtn.setText(QCoreApplication.translate("Form", u"SIMPAN", None))
+        self.ubahBtn.setText(QCoreApplication.translate("Form", u"UBAH", None))
+        self.ubahBtn_2.setText(QCoreApplication.translate("Form", u"HAPUS", None))
+        self.cetakBtn.setText(QCoreApplication.translate("Form", u"CETAK", None))
         ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("Form", u"ID", None));
         ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
